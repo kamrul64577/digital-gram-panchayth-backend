@@ -110,24 +110,24 @@ app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.h
 
 
 
-  app.get('/edit-services-form/:H_id', function(req, res, next) {
-    var H_id = req.params.H_id;
-    db.query(`SELECT * FROM services WHERE H_id=${H_id}`, function(err, row) {
+  app.get('/edit-services-form/:s_id', function(req, res, next) {
+    var s_id = req.params.s_id;
+    db.query(`SELECT * FROM services WHERE s_id=${s_id}`, function(err, row) {
         console.log(row[0]);
         res.render('editServices.hbs', {hos: row[0]});
     });
   });
 
 
-  app.post('/edit/:H_id', function(req, res, next) {
+  app.post('/edit/:s_id', function(req, res, next) {
     var sname = req.body.sname;
     var sdescription = req.body.sdescription;
     var scategories = req.body.scategories;
-    var H_id = req.params.H_id;
+    var s_id = req.params.s_id;
     
    
   
-    db.query(`UPDATE services SET sname="${sname}", scategories="${scategories}", sdescription="${sdescription}" WHERE H_id=${H_id}`, function(err, row) {
+    db.query(`UPDATE services SET sname="${sname}", scategories="${scategories}", sdescription="${sdescription}" WHERE s_id=${s_id}`, function(err, row) {
     
       if(err){
         console.log(err)
@@ -140,10 +140,10 @@ app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.h
     });
   });
 
-  app.get('/delete-services/:H_id', function(req, res){
-    var H_id = req.params.H_id;
-    console.log(H_id);
-    var sql = `DELETE FROM services WHERE H_id=${H_id}`;
+  app.get('/delete-services/:s_id', function(req, res){
+    var s_id = req.params.s_id;
+    console.log(s_id);
+    var sql = `DELETE FROM services WHERE s_id=${s_id}`;
   
     db.query(sql, function(err, result) {
       if (err) throw err;

@@ -57,14 +57,14 @@
           </tr>
           {{#each hos}}
           <tr>
-            <td>{{this.H_id}}</td>
+            <td>{{this.s_id}}</td>
             <td>{{this.sname}}</td>
             <td>{{this.scategories}}</td>
             <td style="max-width:450px">{{this.sdescription}}</td>
       
             <td style="min-width:150px">
-              <a href="/edit-services-form/{{this.H_id}}" class="btn btn-info btn-sm">Edit</a>
-              <a onclick="alert('Are you sure')" href="/delete-services/{{this.H_id}}" class="btn btn-danger btn-sm">Delete</a>
+              <a href="/edit-services-form/{{this.s_id}}" class="btn btn-info btn-sm">Edit</a>
+              <a onclick="alert('Are you sure')" href="/delete-services/{{this.s_id}}" class="btn btn-danger btn-sm">Delete</a>
             </td>
           </tr>
           {{/each}}
