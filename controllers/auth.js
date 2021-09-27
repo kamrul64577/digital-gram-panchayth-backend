@@ -85,15 +85,7 @@ exports.register = (req,res) =>{
         })
    });
 
-  
-
-    //res.send("Form Submitted");
 }
-
-
-
-
-
 
 
 
@@ -102,65 +94,13 @@ exports.services_add = (req,res) =>{
 
     const { sname, sdescription, scategories} = req.body ;
     
-        db.query('INSERT INTO hospital_name SET ?', {sname:sname, scategories:scategories, sdescription:sdescription }, (error,result) => {
+        db.query('INSERT INTO services SET ?', {sname:sname, scategories:scategories, sdescription:sdescription }, (error,result) => {
             if(error){
                 console.log(error)
             }else{
-                return res.render('hospital_add.hbs',{
+                return res.render('services_add.hbs',{
                     message: 'Successfully Added the Service'
                 });
             }
         })
 }
-
-
-
-
-
-
-
-exports.categories_add = (req,res) =>{
-    console.log(req.body);
-
-    const { name, h_id} = req.body ;
-    
-        db.query('INSERT INTO specialist SET ?', {name:name, h_id:h_id }, (error,result) => {
-            if(error){
-                console.log(error)
-            }else{
-                return res.render('categories_add.hbs',{
-                    message: 'Successfully Added the Specialist'
-                });
-            }
-        })
-}
-
-
-exports.doctor_add = (req,res) =>{
-    console.log(req.body);
-
-    const { name, dlocation, H_id, contact_no, qualification, S_id} = req.body ;
-    
-        db.query('INSERT INTO doctor SET ?', {name:name, dlocation:dlocation, H_id:H_id, contact_no:contact_no, qualification:qualification, S_id:S_id }, (error,result) => {
-            if(error){
-                console.log(error)
-            }else{
-                return res.render('doctor_add.hbs',{
-                    message: 'Successfully Added the Doctors'
-                });
-            }
-        })
-}
-
-
-
-
-
-
-
-
-
-
-
-
-

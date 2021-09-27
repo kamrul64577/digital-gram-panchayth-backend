@@ -45,21 +45,13 @@ db.connect((error) =>{
 app.get('/login', (req,res) => res.render('login.hbs'))
 app.get('/register', (req,res) => res.render('register.hbs'))
 
-// app.get('/', requireAuth,(req,res) => res.render('index.hbs'))
-app.get('/services_add', requireAuth,(req,res) => res.render('hospital_add.hbs'))
+
+app.get('/services_add', requireAuth,(req,res) => res.render('services_add.hbs'))
 app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.hbs'))
-// app.get('/requestService', requireAuth,(req,res) => res.render('requestService.hbs'))
-// app.get('/repairRequest', requireAuth,(req,res) => res.render('repairRequest.hbs'))
 
 
 
-// app.get("/", (req, res) => {
-//   const sqlInsert = "INSERT INTO movie_review (movieName, movieReview) VALUES ('inception', 'good')";
-//   db.query(sqlInsert, (err, result) => {
-//     res.send('bd is')
-//   })
 
-// })
 
 
 
@@ -67,26 +59,15 @@ app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.h
 /*===================================================================
          Service SECTION
 ===================================================================== */
-  // app.get('/services', requireAuth,function(req,res){
-  //   db.query('SELECT * FROM hospital_name', function(err, row) {
-  //     if(err){
-  //         console.log(err)
-  //     }
-  //     else{
-  //       console.log(row)
-  //       res.render('hospital.hbs', {title: "Hospital Name", hos:row})
-          
-  //     }
-  // })
-  // });
+
   app.get('/services', requireAuth,function(req,res){
-    db.query('SELECT * FROM hospital_name', function(err, row) {
+    db.query('SELECT * FROM services', function(err, row) {
       if(err){
           console.log(err)
       }
       else{
         // console.log(row)
-        res.render('hospital.hbs', {title: "Hospital Name", hos:row})
+        res.render('services.hbs', {title: "service Name", hos:row})
           
       }
   })
@@ -131,10 +112,9 @@ app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.h
 
   app.get('/edit-services-form/:H_id', function(req, res, next) {
     var H_id = req.params.H_id;
-    //var sql = `SELECT * FROM hospital_name WHERE H_id=${H_id}`;
-    db.query(`SELECT * FROM hospital_name WHERE H_id=${H_id}`, function(err, row) {
+    db.query(`SELECT * FROM services WHERE H_id=${H_id}`, function(err, row) {
         console.log(row[0]);
-        res.render('editHospital.hbs', {hos: row[0]});
+        res.render('editServices.hbs', {hos: row[0]});
     });
   });
 
@@ -145,12 +125,10 @@ app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.h
     var scategories = req.body.scategories;
     var H_id = req.params.H_id;
     
-    //var sql = `UPDATE hospital_name SET sname="${sname}", sdescription="${sdescription}" WHERE H_id=${H_id}`;
+   
   
-    db.query(`UPDATE hospital_name SET sname="${sname}", scategories="${scategories}", sdescription="${sdescription}" WHERE H_id=${H_id}`, function(err, row) {
-      // if (err) throw err;
-      // console.log('record updated!');
-      // res.redirect('/hospital.hbs');
+    db.query(`UPDATE services SET sname="${sname}", scategories="${scategories}", sdescription="${sdescription}" WHERE H_id=${H_id}`, function(err, row) {
+    
       if(err){
         console.log(err)
     }
@@ -162,10 +140,10 @@ app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.h
     });
   });
 
-  app.get('/delete-hospital/:H_id', function(req, res){
+  app.get('/delete-services/:H_id', function(req, res){
     var H_id = req.params.H_id;
     console.log(H_id);
-    var sql = `DELETE FROM hospital_name WHERE H_id=${H_id}`;
+    var sql = `DELETE FROM services WHERE H_id=${H_id}`;
   
     db.query(sql, function(err, result) {
       if (err) throw err;
@@ -226,15 +204,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.post("/api/insert", (req, res) => {
-  const movieName = req.body.movieName;
-  const movieReview = req.body.movieReview;
 
-  const sqlInsert = "INSERT INTO movie_review (movieName, movieReview) VALUES (?, ?)";
-  db.query(sqlInsert, [movieName, movieReview], (err, result) => {
-
-  })
-})
 
 app.post("/api/insertService", (req, res) => {
   const name = req.body.name;
@@ -269,7 +239,7 @@ app.post("/api/insertRepair", (req, res) => {
 
 
 app.get("/getServices", (req, res) => {
-  db.query("SELECT * FROM hospital_name", (err, result) => {
+  db.query("SELECT * FROM services", (err, result) => {
     if (err) {
       console.log(err);
     } else {
