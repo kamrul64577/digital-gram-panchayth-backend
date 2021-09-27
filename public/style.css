@@ -1,0 +1,22 @@
+nav{
+    background-color: #562d7c !important;
+    
+   
+}
+nav .navbar-nav .nav-item .nav-link{
+    color:rgb(216, 205, 205);
+    font-size: 18px;
+}
+nav .navbar-nav .nav-item .acti{
+    color:white;
+}
+#login{
+    background-image: url(images/login.jpeg);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.service-page{
+    background-color: #F5F7FE;
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+      
+      <nav class="navbar navbar-expand-lg navbar-dark py-3 ">
+        <div class="container">
+          <a class="navbar-brand" href="#">Service Officer</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item ">
+                <a class="nav-link " href="/services">Home</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link acti" href="/add">Add Service</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link " href="/requestservice">Requested Service</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link " href="/repairrequest">Repairing</a>
+              </li>
+              
+              {{!-- <li class="nav-item">
+                <a class="nav-link " href="/categories">Specialist</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link acti" href="/hospital">Hospital</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/doctor">Doctors</a>
+              </li> --}}
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="service-page">
+        {{#if message}}
+        <h4 class="alert alert-success m-0 text-center">{{message}}</h4>
+        {{/if}}
+        <div id="categories" class="py-3">
+          <div class="container py-4">
+            <div class="col-lg-6 offset-3">
+              <div class="card  p-5">
+                <h1 class="mb-3 text-center">Add Service</h1>
+                <form action="/auth/services_add" method="POST">
+                  <div class="form-group">
+                    <h5>Name</h5>
+                    <input type="text" class="form-control" id="sname" name="sname" placeholder="Service Name" required>
+                  </div>
+                  <div class="form-group">
+                    <h5>Category</h5>
+                    <input type="text" class="form-control" id="scategories" name="scategories" placeholder="Service Category"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <h5>Description</h5>
+                    <textarea type="text" class="form-control" id="sdescription" name="sdescription"
+                      placeholder="Service Description" required></textarea>
+                  </div>
+        
+                  <button class="btn btn-lg btn-info mt-3 mx-auto d-block" type="submit">Save</button>
+                </form>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+
+  <footer>
+    <p class="text-center p-2 bg-dark text-white mb-0">All copyright &copy; reseved 2021</p>
+  </footer>
+
+    {{!-- <form action=""/auth/categories1" method="POST">
+         <a href="/categories1">Show Categories</a>
+    </form> --}}
+    
+  
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
