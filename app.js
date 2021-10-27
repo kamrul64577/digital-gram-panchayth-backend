@@ -47,12 +47,7 @@ app.get('/register', (req,res) => res.render('register.hbs'))
 
 
 app.get('/services_add', requireAuth,(req,res) => res.render('services_add.hbs'))
-app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.hbs'))
-
-
-
-
-
+// app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.hbs'))
 
 
 
@@ -98,15 +93,6 @@ app.get('/categories_add', requireAuth,(req,res) => res.render('categories_add.h
       }
   })
   });
-
-
-
-
-
-
-
-
-
 
 
 
